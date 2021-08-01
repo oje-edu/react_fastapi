@@ -28,13 +28,13 @@ class _LeadBase(_pydantic.BaseModel):
     note: str
 
 
-class LeadCreacte(_LeadBase):
+class LeadCreate(_LeadBase):
     pass
 
 
 class Lead(_LeadBase):
     id: int
-    owner_id: id
+    owner_id: int
     date_created: _dt.datetime
     date_last_updated: _dt.datetime
 
