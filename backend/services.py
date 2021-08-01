@@ -86,3 +86,9 @@ async def create_contact(
     db.commit()
     db.refresh(lead)
     return _schemas.Lead.from_orm(lead)
+
+
+async def get_contacts(user: _schemas.User, db: _orm.Session):
+    leads = db.query(_models.Lead).filter_by(owner_id=user.id)
+
+    return list(map(_schemas.Lead.from_orm, leads))

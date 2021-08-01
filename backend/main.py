@@ -1,3 +1,4 @@
+from typing import List
 import fastapi as _fastapi
 import fastapi.security as _security
 import sqlalchemy.orm as _orm
@@ -48,3 +49,11 @@ async def create_contact(
     db: _orm.Session = _fastapi.Depends(_services.get_db),
 ):
     return await _services.create_contact(user=user, db=db, lead=lead)
+
+
+@app.get("/api/contacts", response_model=List[_schemas.Lead])
+async def get_contacts(
+    user: _schemas.User = _fastapi.Depends(_services.get_current_user),
+    db: _orm.Session = _fastapi.Depends(_services.get_db),
+):
+    return await _services.get_contacts(user=user, db=db)
