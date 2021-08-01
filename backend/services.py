@@ -1,5 +1,7 @@
 import os
 from pathlib import Path
+import fastapi as _fastapi
+import fastapi.security as _security
 import jwt as _jwt
 import sqlalchemy.orm as _orm
 import passlib.hash as _hash
@@ -11,6 +13,8 @@ load_dotenv()
 env_path = Path(".") / ".env"
 load_dotenv(dotenv_path=env_path)
 JWT_SECRET = os.getenv("JWT_SECRET")
+
+oauth2schema = _security.OAuth2PasswordBearer(tokenUrl="/api/token")
 
 
 def create_database():
@@ -57,3 +61,18 @@ async def create_token(user: _models.User):
     token = _jwt.encode(user_obj.dict(), JWT_SECRET)
 
     return dict(access_token=token, token_type="bearer")
+
+
+async def get_current_user(
+    db: _orm.Session = _fastapi.Depends(get_db),
+    token: str = _fastapi.Depends(oauth2schema),
+):
+    try:
+        payload = _jwt.decode(token, JWT_SECRET, algorithms=["HS256"])
+        user = db.query(_models.User).get(payload["id"])
+    except:
+        raise _fastapi.HTTPException(
+            status_code=401, detail="Falsche E-Mail Adresse oder falsches Passwort."
+        )
+
+    return _schemas.User.from_orm(user)
