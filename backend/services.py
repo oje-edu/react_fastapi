@@ -92,3 +92,25 @@ async def get_contacts(user: _schemas.User, db: _orm.Session):
     leads = db.query(_models.Lead).filter_by(owner_id=user.id)
 
     return list(map(_schemas.Lead.from_orm, leads))
+
+
+async def _contact_selector(contact_id: int, user: _schemas.User, db: _orm.Session):
+    lead = (
+        db.query(_models.Lead)
+        .filter_by(owner_id=user.id)
+        .filter(_models.Lead.id == contact_id)
+        .first()
+    )
+
+    if lead is None:
+        raise _fastapi.HTTPException(
+            status_code=404, detail="Dieser Kontakt existiert nicht."
+        )
+
+    return lead
+
+
+async def get_contact(contact_id: int, user: _schemas.User, db: _orm.Session):
+    lead = await _contact_selector(contact_id=contact_id, user=user, db=db)
+
+    return _schemas.Lead.from_orm(lead)

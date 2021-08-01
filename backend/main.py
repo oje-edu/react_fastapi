@@ -57,3 +57,12 @@ async def get_contacts(
     db: _orm.Session = _fastapi.Depends(_services.get_db),
 ):
     return await _services.get_contacts(user=user, db=db)
+
+
+@app.get("/api/contacts/{contact_id}", status_code=200)
+async def get_contact(
+    contact_id: int,
+    user: _schemas.User = _fastapi.Depends(_services.get_current_user),
+    db: _orm.Session = _fastapi.Depends(_services.get_db),
+):
+    return await _services.get_contact(contact_id, user, db)
