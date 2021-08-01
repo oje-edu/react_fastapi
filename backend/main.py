@@ -129,3 +129,8 @@ async def delete_contact(
 ):
     await _services.delete_contact(contact_id, user, db)
     return {"message", "Der Kontakt wurde gelöscht."}
+
+
+@app.get("/api")
+async def root():
+    return {"message": "ContactsAPI root endpoint"}
