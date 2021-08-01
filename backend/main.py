@@ -60,7 +60,7 @@ async def create_user(
         raise _fastapi.HTTPException(
             status_code=400, detail="Diese E-Mail Adresse wird bereits verwendet."
         )
-    await _services.create_user(user, db)
+    user = await _services.create_user(user, db)
 
     return await _services.create_token(user)
 
