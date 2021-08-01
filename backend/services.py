@@ -76,3 +76,13 @@ async def get_current_user(
         )
 
     return _schemas.User.from_orm(user)
+
+
+async def create_contact(
+    user: _schemas.User, db: _orm.Session, lead: _schemas.LeadCreate
+):
+    lead = _models.Lead(**lead.dict(), owner_id=user.id)
+    db.add(lead)
+    db.commit()
+    db.refresh(lead)
+    return _schemas.Lead.from_orm(lead)
