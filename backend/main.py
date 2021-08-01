@@ -66,3 +66,24 @@ async def get_contact(
     db: _orm.Session = _fastapi.Depends(_services.get_db),
 ):
     return await _services.get_contact(contact_id, user, db)
+
+
+@app.put("/api/contacts/{contact_id}", status_code=200)
+async def update_contact(
+    contact_id: int,
+    lead: _schemas.LeadCreate,
+    user: _schemas.User = _fastapi.Depends(_services.get_current_user),
+    db: _orm.Session = _fastapi.Depends(_services.get_db),
+):
+    await _services.update_contact(contact_id, lead, user, db)
+    return {"message", "Die Änderungen wurden übernommen."}
+
+
+@app.delete("/api/contacts/{contact_id}", status_code=204)
+async def delete_contact(
+    contact_id: int,
+    user: _schemas.User = _fastapi.Depends(_services.get_current_user),
+    db: _orm.Session = _fastapi.Depends(_services.get_db),
+):
+    await _services.delete_contact(contact_id, user, db)
+    return {"message", "Der Kontakt wurde gelöscht."}

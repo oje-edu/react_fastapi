@@ -23,7 +23,17 @@ class User(_UserBase):
 class _LeadBase(_pydantic.BaseModel):
     first_name: str
     last_name: str
+    birthdate: _dt.date
     email: str
+    phone: str
+    street: str
+    city: str
+    discord: str
+    twitter: str
+    facebook: str
+    youtube: str
+    linkedin: str
+    homepage: str
     company: str
     note: str
 

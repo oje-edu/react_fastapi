@@ -3,6 +3,7 @@ from pathlib import Path
 import fastapi as _fastapi
 import fastapi.security as _security
 import jwt as _jwt
+import datetime as _dt
 import sqlalchemy.orm as _orm
 import passlib.hash as _hash
 import database as _database, models as _models, schemas as _schemas
@@ -114,3 +115,38 @@ async def get_contact(contact_id: int, user: _schemas.User, db: _orm.Session):
     lead = await _contact_selector(contact_id=contact_id, user=user, db=db)
 
     return _schemas.Lead.from_orm(lead)
+
+
+async def update_contact(
+    contact_id: int, lead: _schemas.LeadCreate, user: _schemas.User, db: _orm.Session
+):
+    lead_db = await _contact_selector(contact_id, user, db)
+
+    lead_db.first_name = lead.first_name
+    lead_db.last_name = lead.last_name
+    lead_db.birthdate = lead.birthdate
+    lead_db.email = lead.email
+    lead_db.phone = lead.phone
+    lead_db.street = lead.street
+    lead_db.city = lead.city
+    lead_db.discord = lead.discord
+    lead_db.twitter = lead.twitter
+    lead_db.facebook = lead.facebook
+    lead_db.youtube = lead.youtube
+    lead_db.linkedin = lead.linkedin
+    lead_db.homepage = lead.homepage
+    lead_db.company = lead.company
+    lead_db.note = lead.note
+    lead_db.date_last_updated = _dt.datetime.utcnow()
+
+    db.commit()
+    db.refresh(lead_db)
+
+    return _schemas.Lead.from_orm(lead_db)
+
+
+async def delete_contact(contact_id: int, user: _schemas.User, db: _orm.Session):
+    lead = await _contact_selector(contact_id, user, db)
+
+    db.delete(lead)
+    db.commit()

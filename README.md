@@ -4,6 +4,10 @@
 
 ## Backend
 
+First remame the file `.env-sample` to `.env` and change the JWT_SECRET value.
+*for a quick random key you can visit [https://randomkeygen.com/](https://randomkeygen.com/)*
+
+
 ### Create VirtualEnvironment and install Dependencies
 
 To create the Environment `cd` into the `backend` folder with a Terminal
