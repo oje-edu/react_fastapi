@@ -1,10 +1,11 @@
 import { useState, useEffect, useContext } from 'react'
 import Register from './components/Register'
+import Login from './components/Login'
 import Header from './components/Header'
 import { UserContext } from './context/UserContext'
 
 const App = () => {
-
+  const [isSignup, setIsSignup] = useState(false)
   const [message, setMessage] = useState('')
   const [token] = useContext(UserContext)
 
@@ -25,6 +26,10 @@ const App = () => {
     }
   }
 
+  const switchMode = () => {
+    setIsSignup((prevIsSignup) => !prevIsSignup)
+  }
+
   useEffect(() => {
     getWelcomeMsg()
   }, [])
@@ -38,7 +43,12 @@ const App = () => {
           {
             !token ? (
               <div className='columns'>
-                <Register /> <p>Einloggen</p>
+              {
+                isSignup ?  <Register /> : <Login />
+              }
+              <button className='button is-secondary' onClick={switchMode}>
+                { isSignup ? 'Bereits registriert? Einloggen' : 'Noch nicht registriert? Konto erstellen'}
+              </button>
               </div>
             ) : (
               <p>Table</p>

@@ -2,20 +2,19 @@ import { useContext, useState } from 'react';
 import { UserContext } from '../context/UserContext';
 import ErrorMessage from './ErrorMessage';
 
-const Register = () => {
+const Login = () => {
   const [ email, setEmail ] = useState('')
   const [ password, setPassword ] = useState('')
-  const [ confirmPassword, setConfirmPassword ] = useState('')
   const [ errMsg, setErrMsg ] = useState('')
   const [ , setToken] = useContext(UserContext)
 
-  const submitRegistration = async () => {
+  const submitLogin = async () => {
     const reqOptions = {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email: email, hashed_password: password }),
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded '},
+      body: JSON.stringify(`grant_type=&username=${email}&password=${password}&scope=&client_id=&client_secret=`),
     }
-    const res = await fetch('/api/users', reqOptions)
+    const res = await fetch('/api/token', reqOptions)
     const data = await res.json()
 
     if (!res.ok) {
@@ -25,20 +24,15 @@ const Register = () => {
     }
   }
 
-
   const handleSubmit = (e) => {
     e.preventDefault()
-    if (password === confirmPassword && password.length >= 8 ) {
-      submitRegistration()
-    } else {
-      setErrMsg('Stelle sicher das deine Passwörter übereinstimmen und das Passwort mindestens 8 Zeichen lang ist.')
-    }
+      submitLogin()
   }
 
   return (
     <div className='column'>
       <form className='box' onSubmit={handleSubmit}>
-        <h1 className='title has-tet-centered'>Registrieren</h1>
+        <h1 className='title has-tet-centered'>Einloggen</h1>
         <div className='field'>
           <label htmlFor='email' className='label'>E-Mail Adresse</label>
           <div className='control'>
@@ -69,27 +63,12 @@ const Register = () => {
             />
           </div>
         </div>
-        <div className='field'>
-          <label htmlFor='confirmPassword' className='label'>Passwort wiederholen</label>
-          <div className='control'>
-            <input
-              type='password'
-              name='confirmPassword'
-              id='confirmPassword'
-              placeholder='Gib das Passwort erneut ein.'
-              value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
-              className='input'
-              required
-            />
-          </div>
-        </div>
         <ErrorMessage message={errMsg} />
         <br />
-        <button className='button is-primary' type='submit'>Registrieren</button>
+        <button className='button is-primary' type='submit'>Einloggen</button>
       </form>
     </div>
   )
 }
 
-export default Register
+export default Login

@@ -6,7 +6,7 @@
 
 First rename the file `.env-sample` to `.env` and change the JWT_SECRET value.
 
-*for a quick random key you can visit [https://randomkeygen.com/](https://randomkeygen.com/)*
+*For a quick random key you can visit [https://randomkeygen.com/](https://randomkeygen.com/)*
 
 
 ### Create VirtualEnvironment and install Dependencies
