@@ -1,6 +1,6 @@
 # React-FastAPI
 
-![GitHub last commit](https://img.shields.io/github/last-commit/oje-edu/react_fastapi) ![GitHub repo size](https://img.shields.io/github/repo-size/oje-edu/react_fastapi) [visit](https://contacts.noconcept.dev) ![Website](https://img.shields.io/website?down_color=crimson&down_message=%E2%80%A0&style=plastic&up_color=lime&up_message=online&url=https%3A%2F%2Fcontacts.noconcept.dev)
+![GitHub last commit](https://img.shields.io/github/last-commit/oje-edu/react_fastapi) ![GitHub repo size](https://img.shields.io/github/repo-size/oje-edu/react_fastapi) -|- [visit](https://contacts.noconcept.dev) -|- ![Website](https://img.shields.io/website?down_color=crimson&down_message=%E2%80%A0&style=plastic&up_color=lime&up_message=online&url=https%3A%2F%2Fcontacts.noconcept.dev)
 
 ## Frontend
 
@@ -11,7 +11,7 @@ Simple Frontend for Demo purposes
 
 ## Backend
 
-[visit](https://contact-api.noconcept.dev/docs) ![Website](https://img.shields.io/website?down_color=crimson&down_message=%E2%80%A0&style=plastic&up_color=lime&up_message=online&url=https%3A%2F%2Fcontact-api.noconcept.dev/docs)
+-|- [visit](https://contact-api.noconcept.dev/docs) -|- ![Website](https://img.shields.io/website?down_color=crimson&down_message=%E2%80%A0&style=plastic&up_color=lime&up_message=online&url=https%3A%2F%2Fcontact-api.noconcept.dev/docs)
 
 First rename the file `.env-sample` to `.env` and change the JWT_SECRET value.
 
