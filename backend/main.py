@@ -133,4 +133,4 @@ async def delete_contact(
 
 @app.get("/api")
 async def root():
-    return {"message": "Deine Kontaktverwaltung"}
+    return {"message": "Meine Kontaktverwaltung"}
