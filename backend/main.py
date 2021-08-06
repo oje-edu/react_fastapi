@@ -1,4 +1,5 @@
 from typing import List
+import uvicorn
 import fastapi as _fastapi
 import fastapi.security as _security
 import sqlalchemy.orm as _orm
@@ -136,5 +137,4 @@ async def root():
     return {"message": "Meine Kontaktverwaltung"}
 
 if __name__ == '__main__':
-import uvicorn
-uvicorn.run(app, host="127.0.0.1", port=8002)
+    uvicorn.run("main:app", host="127.0.0.1", port=8002)
