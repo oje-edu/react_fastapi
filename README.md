@@ -11,7 +11,7 @@ Simple Frontend for Demo purposes
 
 ## Backend
 
-[https://contact-api.noconcept.dev](https://contact-api.noconcept.dev)
+[https://contact-api.noconcept.dev](https://contact-api.noconcept.dev) ![Website](https://img.shields.io/website?down_color=crimson&down_message=%E2%80%A0&style=plastic&up_color=lime&up_message=online&url=https%3A%2F%2Fcontact-api.noconcept.dev)
 
 First rename the file `.env-sample` to `.env` and change the JWT_SECRET value.
 
