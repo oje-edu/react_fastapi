@@ -38,23 +38,31 @@ const App = () => {
   return (
     <>
       <Header title={message} />
-      <div className="columns">
-        <div className="column"></div>
-        <div className="column m-5 is-two-thirds">
-          {!token ? (
-            <div className="columns">
-              {isSignup ? <Register /> : <Login />}
-              <button className="button is-secondary" onClick={switchMode}>
-                {isSignup
-                  ? "Bereits registriert? Einloggen"
-                  : "Noch nicht registriert? Konto erstellen"}
-              </button>
-            </div>
-          ) : (
-            <Table />
-          )}
-        </div>
-        <div className="column"></div>
+      <div className="container is-fluid">
+        {!token ? (
+          <div className="container">
+            {isSignup ? (
+              <div>
+                <Register />
+                <button
+                  className="button is-secondary is-center"
+                  onClick={switchMode}
+                >
+                  Bereits registriert? Einloggen
+                </button>
+              </div>
+            ) : (
+              <div>
+                <Login />
+                <button className="button is-secondary" onClick={switchMode}>
+                  Noch nicht registriert? Konto erstellen
+                </button>
+              </div>
+            )}
+          </div>
+        ) : (
+          <Table />
+        )}
       </div>
     </>
   );

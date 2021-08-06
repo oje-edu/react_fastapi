@@ -222,18 +222,20 @@ const Table = () => {
                   <td>{contact.note}</td>
                   <td>{moment(contact.date_last_updated).format("lll")}</td>
                   <td>
-                    <button
-                      className="button mr-2 is-info is-light"
-                      onClick={() => handleUpdate(contact.id)}
-                    >
-                      Bearbeiten
-                    </button>
-                    <button
-                      className="button mr-2 is-danger is-light"
-                      onClick={() => handleDelete(contact.id)}
-                    >
-                      Löschen
-                    </button>
+                    <div class="buttons are-normal">
+                      <button
+                        className="button mr-2 is-info is-light"
+                        onClick={() => handleUpdate(contact.id)}
+                      >
+                        Bearbeiten
+                      </button>
+                      <button
+                        className="button mr-2 is-danger is-light"
+                        onClick={() => handleDelete(contact.id)}
+                      >
+                        Löschen
+                      </button>
+                    </div>
                   </td>
                 </tr>
               ))}
