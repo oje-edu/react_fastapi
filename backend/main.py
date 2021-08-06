@@ -2,6 +2,7 @@ from typing import List
 import uvicorn
 import fastapi as _fastapi
 import fastapi.security as _security
+from fastapi.middleware.cors import CORSMiddleware
 import sqlalchemy.orm as _orm
 import services as _services
 import schemas as _schemas
@@ -49,6 +50,21 @@ app = _fastapi.FastAPI(
         "name": "Apache 2.0",
         "url": "https://www.apache.org/licenses/LICENSE-2.0.html",
     },
+)
+
+origins = [
+    "http://contacts.noconcept.dev",
+    "https://contacts.noconcept.dev",
+    "http://localhost",
+    "http://localhost:8002",
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 
