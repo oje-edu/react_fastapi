@@ -16,7 +16,10 @@ const Login = () => {
         `grant_type=&username=${email}&password=${password}&scope=&client_id=&client_secret=`
       ),
     };
-    const res = await fetch("/api/token", reqOptions);
+    const res = await fetch(
+      "https://contact-api.noconcept.dev/api/token",
+      reqOptions
+    );
     const data = await res.json();
 
     if (!res.ok) {

@@ -46,7 +46,10 @@ const ContactModal = ({ active, handleModal, token, id, setErrorMsg }) => {
           Authorization: "Bearer " + token,
         },
       };
-      const res = await fetch(`/api/contacts/${id}`, reqOptions);
+      const res = await fetch(
+        `https://contact-api.noconcept.dev/api/contacts/${id}`,
+        reqOptions
+      );
       if (!res.ok) {
         setErrorMsg(
           "Opps, beim holen der Kontaktdaten ist etwas in die Hose gegangen."
@@ -178,7 +181,10 @@ const ContactModal = ({ active, handleModal, token, id, setErrorMsg }) => {
         youtube: youtube,
       }),
     };
-    const res = await fetch("/api/contacts", reqOptions);
+    const res = await fetch(
+      "https://contact-api.noconcept.dev/api/contacts",
+      reqOptions
+    );
     console.log(res);
     if (!res.ok) {
       setErrorMsg(
@@ -236,7 +242,10 @@ const ContactModal = ({ active, handleModal, token, id, setErrorMsg }) => {
         youtube: youtube,
       }),
     };
-    const res = await fetch(`/api/contacts/${id}`, reqOptions);
+    const res = await fetch(
+      `https://contact-api.noconcept.dev/api/contacts/${id}`,
+      reqOptions
+    );
     if (!res.ok) {
       setErrorMsg(
         "Oops, beim bearbeiten des Kontaktes ist etwas in die Hose gegangen."

@@ -1,30 +1,35 @@
-import { createContext, useEffect, useState } from "react"
+import { createContext, useEffect, useState } from "react";
 
-export const UserContext = createContext()
+export const UserContext = createContext();
 
 export const UserProvider = (props) => {
-  const [token, setToken] = useState(localStorage.getItem("thenoconceptdevKontaktToken"))
+  const [token, setToken] = useState(
+    localStorage.getItem("thenoconceptdevKontaktToken")
+  );
 
   useEffect(() => {
     const fetchUser = async () => {
       const reqOptions = {
-        method: 'GET',
+        method: "GET",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
           Authorization: "Bearer " + token,
         },
-      }
-      const res = await fetch('/api/users/me', reqOptions)
+      };
+      const res = await fetch(
+        "https://contact-api.noconcept.dev/api/users/me",
+        reqOptions
+      );
       if (!res.ok) {
-        setToken(null)
+        setToken(null);
       }
-      localStorage.setItem("thenoconceptdevKontaktToken", token)
-    }
-    fetchUser()
-  }, [token])
+      localStorage.setItem("thenoconceptdevKontaktToken", token);
+    };
+    fetchUser();
+  }, [token]);
   return (
     <UserContext.Provider value={[token, setToken]}>
       {props.children}
     </UserContext.Provider>
-  )
-}
+  );
+};

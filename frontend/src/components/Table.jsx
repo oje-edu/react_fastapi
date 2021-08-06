@@ -13,6 +13,8 @@ const Table = () => {
   const [activeModal, setActiveModal] = useState(false);
   const [id, setId] = useState(null);
 
+  const url = process.env.REACT_APP_API;
+
   const handleUpdate = async (id) => {
     setId(id);
     setActiveModal(true);
@@ -26,7 +28,10 @@ const Table = () => {
         Authorization: "Bearer " + token,
       },
     };
-    const res = await fetch(`/api/contacts/${id}`, reqOptions);
+    const res = await fetch(
+      `https://contact-api.noconcept.dev/api/contacts/${id}`,
+      reqOptions
+    );
     if (!res.ok) {
       setErrorMsg(
         "Oops, beim löschen des Kontaktes ist etwas in die Hose gegangen."
@@ -43,7 +48,10 @@ const Table = () => {
         Authorization: "Bearer " + token,
       },
     };
-    const res = await fetch("/api/contacts", reqOptions);
+    const res = await fetch(
+      "https://contact-api.noconcept.dev/api/contacts",
+      reqOptions
+    );
 
     if (!res.ok) {
       setErrorMsg(

@@ -5,6 +5,8 @@ import Header from "./components/Header";
 import Table from "./components/Table";
 import { UserContext } from "./context/UserContext";
 
+const url = process.env.REACT_APP_API;
+
 const App = () => {
   const [isSignup, setIsSignup] = useState(false);
   const [message, setMessage] = useState("");
@@ -17,7 +19,10 @@ const App = () => {
         "Content-Type": "application/json",
       },
     };
-    const res = await fetch("/api", reqOptions);
+    const res = await fetch(
+      "https://contact-api.noconcept.dev/api",
+      reqOptions
+    );
     const data = await res.json();
 
     if (!res.ok) {
