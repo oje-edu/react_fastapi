@@ -134,3 +134,7 @@ async def delete_contact(
 @app.get("/api")
 async def root():
     return {"message": "Meine Kontaktverwaltung"}
+
+if __name__ == '__main__':
+import uvicorn
+uvicorn.run(app, host="127.0.0.1", port=8002)
