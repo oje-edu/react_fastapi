@@ -30,6 +30,7 @@ To create the Environment `cd` into the `backend` folder with a Terminal
 
 ### Create Database
 
+- 1. Delete the existing demo database `database.db` in the backend folder.
 - To create the Sqlite Database `cd` into the `backend` folder activate your venv (see above) and install the dependencies also!
   - now run the `python` command (to enter the python console)
 - In the python console run
