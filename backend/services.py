@@ -80,73 +80,89 @@ async def get_current_user(
 
 
 async def create_contact(
-    user: _schemas.User, db: _orm.Session, lead: _schemas.LeadCreate
+    user: _schemas.User, db: _orm.Session, contact: _schemas.ContactCreate
 ):
-    lead = _models.Lead(**lead.dict(), owner_id=user.id)
-    db.add(lead)
+    contact = _models.Contact(**contact.dict(), owner_id=user.id)
+    db.add(contact)
     db.commit()
-    db.refresh(lead)
-    return _schemas.Lead.from_orm(lead)
+    db.refresh(contact)
+    return _schemas.Contact.from_orm(contact)
 
 
 async def get_contacts(user: _schemas.User, db: _orm.Session):
-    leads = db.query(_models.Lead).filter_by(owner_id=user.id)
+    contacts = db.query(_models.Contact).filter_by(owner_id=user.id)
 
-    return list(map(_schemas.Lead.from_orm, leads))
+    return list(map(_schemas.Contact.from_orm, contacts))
 
 
 async def _contact_selector(contact_id: int, user: _schemas.User, db: _orm.Session):
-    lead = (
-        db.query(_models.Lead)
+    contact = (
+        db.query(_models.Contact)
         .filter_by(owner_id=user.id)
-        .filter(_models.Lead.id == contact_id)
+        .filter(_models.Contact.id == contact_id)
         .first()
     )
 
-    if lead is None:
+    if contact is None:
         raise _fastapi.HTTPException(
             status_code=404, detail="Dieser Kontakt existiert nicht."
         )
 
-    return lead
+    return contact
 
 
 async def get_contact(contact_id: int, user: _schemas.User, db: _orm.Session):
-    lead = await _contact_selector(contact_id=contact_id, user=user, db=db)
+    contact = await _contact_selector(contact_id=contact_id, user=user, db=db)
 
-    return _schemas.Lead.from_orm(lead)
+    return _schemas.Contact.from_orm(contact)
 
 
-async def update_contact(
-    contact_id: int, lead: _schemas.LeadCreate, user: _schemas.User, db: _orm.Session
-):
-    lead_db = await _contact_selector(contact_id, user, db)
-
-    lead_db.first_name = lead.first_name
-    lead_db.last_name = lead.last_name
-    lead_db.birthdate = lead.birthdate
-    lead_db.email = lead.email
-    lead_db.phone = lead.phone
-    lead_db.street = lead.street
-    lead_db.city = lead.city
-    lead_db.discord = lead.discord
-    lead_db.twitter = lead.twitter
-    lead_db.facebook = lead.facebook
-    lead_db.youtube = lead.youtube
-    lead_db.linkedin = lead.linkedin
-    lead_db.homepage = lead.homepage
-    lead_db.company = lead.company
-    lead_db.note = lead.note
-    lead_db.date_last_updated = _dt.datetime.utcnow()
+async def update_contact(contact_id: int, contact: _schemas.ContactCreate, user: _schemas.User, db: _orm.Session):
+    contact_db = await _contact_selector(contact_id, user, db)
+    contact_db.birthdate = contact.birthdate
+    contact_db.city = contact.city
+    contact_db.company = contact.company
+    contact_db.deviantart = contact.deviantart
+    contact_db.discord = contact.discord
+    contact_db.dribble = contact.dribble
+    contact_db.email = contact.email
+    contact_db.facebook = contact.facebook
+    contact_db.first_name = contact.first_name
+    contact_db.flickr = contact.flickr
+    contact_db.github = contact.github
+    contact_db.gitlab = contact.gitlab
+    contact_db.homepage = contact.homepage
+    contact_db.instagram = contact.instagram
+    contact_db.last_name = contact.last_name
+    contact_db.linkedin = contact.linkedin
+    contact_db.mastodon = contact.mastodon
+    contact_db.netlify = contact.netlify
+    contact_db.note = contact.note
+    contact_db.phone = contact.phone
+    contact_db.pinterest = contact.pinterest
+    contact_db.reddit = contact.reddit
+    contact_db.slack = contact.slack
+    contact_db.spaces = contact.spaces
+    contact_db.street = contact.street
+    contact_db.thumblr = contact.thumblr
+    contact_db.twitch = contact.twitch
+    contact_db.twitter = contact.twitter
+    contact_db.vercel = contact.vercel
+    contact_db.vk = contact.vk
+    contact_db.weibo = contact.weibo
+    contact_db.wize = contact.wize
+    contact_db.xing = contact.xing
+    contact_db.youtube = contact.youtube
+    contact_db.date_last_updated = _dt.datetime.utcnow()
 
     db.commit()
-    db.refresh(lead_db)
+    db.refresh(contact_db)
 
-    return _schemas.Lead.from_orm(lead_db)
+    return _schemas.Contact.from_orm(contact_db)
 
 
 async def delete_contact(contact_id: int, user: _schemas.User, db: _orm.Session):
-    lead = await _contact_selector(contact_id, user, db)
+    contact = await _contact_selector(contact_id, user, db)
 
-    db.delete(lead)
+    db.delete(contact)
     db.commit()

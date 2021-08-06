@@ -102,6 +102,21 @@ const Table = () => {
                 <th>Ort</th>
                 <th>
                   <span class="icon">
+                    <i class="fas fa-building"></i>
+                  </span>
+                </th>
+                <th>
+                  <span class="icon">
+                    <i class="fas fa-sticky-note"></i>
+                  </span>
+                </th>
+                <th>
+                  <span class="icon">
+                    <i class="fas fa-globe"></i>
+                  </span>
+                </th>
+                <th>
+                  <span class="icon">
                     <i class="fab fa-discord"></i>
                   </span>
                 </th>
@@ -123,21 +138,6 @@ const Table = () => {
                 <th>
                   <span class="icon">
                     <i class="fab fa-linkedin"></i>
-                  </span>
-                </th>
-                <th>
-                  <span class="icon">
-                    <i class="fas fa-globe"></i>
-                  </span>
-                </th>
-                <th>
-                  <span class="icon">
-                    <i class="fas fa-building"></i>
-                  </span>
-                </th>
-                <th>
-                  <span class="icon">
-                    <i class="fas fa-sticky-note"></i>
                   </span>
                 </th>
                 <th>
@@ -164,6 +164,17 @@ const Table = () => {
                   <td>{contact.phone}</td>
                   <td>{contact.street}</td>
                   <td>{contact.city}</td>
+                  <td>{contact.company}</td>
+                  <td>{contact.note}</td>
+                  <td>
+                    <a
+                      href={contact.homepage}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      webseite
+                    </a>
+                  </td>
                   <td>
                     <a
                       href={contact.discord}
@@ -209,17 +220,6 @@ const Table = () => {
                       linkedin
                     </a>
                   </td>
-                  <td>
-                    <a
-                      href={contact.homepage}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      webseite
-                    </a>
-                  </td>
-                  <td>{contact.company}</td>
-                  <td>{contact.note}</td>
                   <td>{moment(contact.date_last_updated).format("lll")}</td>
                   <td>
                     <div class="buttons are-normal">

@@ -20,29 +20,48 @@ class User(_UserBase):
         orm_mode = True
 
 
-class _LeadBase(_pydantic.BaseModel):
-    first_name: str
-    last_name: str
+class _ContactBase(_pydantic.BaseModel):
     birthdate: _dt.date
-    email: str
-    phone: str
-    street: str
     city: str
-    discord: str
-    twitter: str
-    facebook: str
-    youtube: str
-    linkedin: str
-    homepage: str
     company: str
+    deviantart: str
+    discord: str
+    dribble: str
+    email: str
+    facebook: str
+    first_name: str
+    flickr: str
+    github: str
+    gitlab: str
+    homepage: str
+    instagram: str
+    last_name: str
+    linkedin: str
+    mastodon: str
+    netlify: str
     note: str
+    phone: str
+    pinterest: str
+    reddit: str
+    slack: str
+    spaces: str
+    street: str
+    thumblr: str
+    tiktok: str
+    twitch: str
+    twitter: str
+    vercel: str
+    vk: str
+    weibo: str
+    wize: str
+    xing: str
+    youtube: str
 
-
-class LeadCreate(_LeadBase):
+class ContactCreate(_ContactBase):
     pass
 
 
-class Lead(_LeadBase):
+class Contact(_ContactBase):
     id: int
     owner_id: int
     date_created: _dt.datetime

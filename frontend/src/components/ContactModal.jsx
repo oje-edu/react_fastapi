@@ -8,14 +8,34 @@ const ContactModal = ({ active, handleModal, token, id, setErrorMsg }) => {
   const [phone, setPhone] = useState("");
   const [street, setStreet] = useState("");
   const [city, setCity] = useState("");
-  const [discord, setDiscord] = useState("");
-  const [twitter, setTwitter] = useState("");
-  const [facebook, setFacebook] = useState("");
-  const [youtube, setYoutube] = useState("");
-  const [linkedin, setLinkedin] = useState("");
-  const [homepage, setHomepage] = useState("");
-  const [company, setCompany] = useState("");
   const [note, setNote] = useState("");
+  const [company, setCompany] = useState("");
+  const [deviantart, setDeviantart] = useState("");
+  const [discord, setDiscord] = useState("");
+  const [dribble, setDribble] = useState("");
+  const [facebook, setFacebook] = useState("");
+  const [flickr, setFlickr] = useState("");
+  const [github, setGithub] = useState("");
+  const [gitlab, setGitlab] = useState("");
+  const [homepage, setHomepage] = useState("");
+  const [instagram, setInstagram] = useState("");
+  const [linkedin, setLinkedin] = useState("");
+  const [mastodon, setMastodon] = useState("");
+  const [netlify, setNetlify] = useState("");
+  const [pinterest, setPinterest] = useState("");
+  const [reddit, setReddit] = useState("");
+  const [slack, setSlack] = useState("");
+  const [spaces, setSpaces] = useState("");
+  const [thumblr, setThumblr] = useState("");
+  const [tiktok, setTiktok] = useState("");
+  const [twitch, setTwitch] = useState("");
+  const [twitter, setTwitter] = useState("");
+  const [vercel, setVercel] = useState("");
+  const [vk, setVk] = useState("");
+  const [weibo, setWeibo] = useState("");
+  const [wize, setWize] = useState("");
+  const [xing, setXing] = useState("");
+  const [youtube, setYoutube] = useState("");
 
   useEffect(() => {
     const getContact = async () => {
@@ -40,20 +60,40 @@ const ContactModal = ({ active, handleModal, token, id, setErrorMsg }) => {
         setPhone(data.phone);
         setStreet(data.street);
         setCity(data.city);
-        setDiscord(data.discord);
-        setTwitter(data.twitter);
-        setFacebook(data.facebook);
-        setYoutube(data.youtube);
-        setLinkedin(data.linkedin);
-        setHomepage(data.homepage);
-        setCompany(data.company);
         setNote(data.note);
+        setCompany(data.company);
+        setDeviantart(data.deviantart);
+        setDiscord(data.discord);
+        setDribble(data.dribble);
+        setFacebook(data.facebook);
+        setFlickr(data.flickr);
+        setGithub(data.github);
+        setGitlab(data.gitlab);
+        setHomepage(data.homepage);
+        setInstagram(data.instagram);
+        setLinkedin(data.linkedin);
+        setMastodon(data.mastodon);
+        setNetlify(data.netlify);
+        setPinterest(data.pinterest);
+        setReddit(data.reddit);
+        setSlack(data.slack);
+        setSpaces(data.spaces);
+        setThumblr(data.thumblr);
+        setTiktok(data.tiktok);
+        setTwitch(data.twitch);
+        setTwitter(data.twitter);
+        setVercel(data.vercel);
+        setVk(data.vk);
+        setWeibo(data.weibo);
+        setWize(data.wize);
+        setXing(data.xing);
+        setYoutube(data.youtube);
       }
     };
     if (id) {
       getContact();
     }
-  }, [id, token]);
+  }, [id, token, setErrorMsg]);
   const clearFormData = () => {
     setFirstName("");
     setLastName("");
@@ -62,14 +102,34 @@ const ContactModal = ({ active, handleModal, token, id, setErrorMsg }) => {
     setPhone("");
     setStreet("");
     setCity("");
-    setDiscord("");
-    setTwitter("");
-    setFacebook("");
-    setYoutube("");
-    setLinkedin("");
-    setHomepage("");
-    setCompany("");
     setNote("");
+    setCompany("");
+    setDeviantart("");
+    setDiscord("");
+    setDribble("");
+    setFacebook("");
+    setFlickr("");
+    setGithub("");
+    setGitlab("");
+    setHomepage("");
+    setInstagram("");
+    setLinkedin("");
+    setMastodon("");
+    setNetlify("");
+    setPinterest("");
+    setReddit("");
+    setSlack("");
+    setSpaces("");
+    setThumblr("");
+    setTiktok("");
+    setTwitch("");
+    setTwitter("");
+    setVercel("");
+    setVk("");
+    setWeibo("");
+    setWize("");
+    setXing("");
+    setYoutube("");
   };
 
   const handleCreateContact = async (e) => {
@@ -88,17 +148,38 @@ const ContactModal = ({ active, handleModal, token, id, setErrorMsg }) => {
         phone: phone,
         street: street,
         city: city,
-        discord: discord,
-        twitter: twitter,
-        facebook: facebook,
-        youtube: youtube,
-        linkedin: linkedin,
-        homepage: homepage,
-        company: company,
         note: note,
+        company: company,
+        deviantart: deviantart,
+        discord: discord,
+        dribble: dribble,
+        facebook: facebook,
+        flickr: flickr,
+        github: github,
+        gitlab: gitlab,
+        homepage: homepage,
+        instagram: instagram,
+        linkedin: linkedin,
+        mastodon: mastodon,
+        netlify: netlify,
+        pinterest: pinterest,
+        reddit: reddit,
+        slack: slack,
+        spaces: spaces,
+        thumblr: thumblr,
+        tiktok: tiktok,
+        twitch: twitch,
+        twitter: twitter,
+        vercel: vercel,
+        vk: vk,
+        weibo: weibo,
+        wize: wize,
+        xing: xing,
+        youtube: youtube,
       }),
     };
     const res = await fetch("/api/contacts", reqOptions);
+    console.log(res);
     if (!res.ok) {
       setErrorMsg(
         "Oops, irgend etwas ging bei der Erstellung des Kontaktes in die Hose"
@@ -125,14 +206,34 @@ const ContactModal = ({ active, handleModal, token, id, setErrorMsg }) => {
         phone: phone,
         street: street,
         city: city,
-        discord: discord,
-        twitter: twitter,
-        facebook: facebook,
-        youtube: youtube,
-        linkedin: linkedin,
-        homepage: homepage,
-        company: company,
         note: note,
+        company: company,
+        deviantart: deviantart,
+        discord: discord,
+        dribble: dribble,
+        facebook: facebook,
+        flickr: flickr,
+        github: github,
+        gitlab: gitlab,
+        homepage: homepage,
+        instagram: instagram,
+        linkedin: linkedin,
+        mastodon: mastodon,
+        netlify: netlify,
+        pinterest: pinterest,
+        reddit: reddit,
+        slack: slack,
+        spaces: spaces,
+        thumblr: thumblr,
+        tiktok: tiktok,
+        twitch: twitch,
+        twitter: twitter,
+        vercel: vercel,
+        vk: vk,
+        weibo: weibo,
+        wize: wize,
+        xing: xing,
+        youtube: youtube,
       }),
     };
     const res = await fetch(`/api/contacts/${id}`, reqOptions);
@@ -184,6 +285,19 @@ const ContactModal = ({ active, handleModal, token, id, setErrorMsg }) => {
               </div>
             </div>
             <div className="field">
+              <label className="label">Geburtstag</label>
+              <div className="control">
+                <input
+                  type="text"
+                  placeholder="Geburtstag eingeben (Bitte format beachten)"
+                  value={birthdate}
+                  onChange={(e) => setBirthdate(e.target.value)}
+                  className="input"
+                />
+                <p className="help is-info">Format: YYYY-MM-DD</p>
+              </div>
+            </div>
+            <div className="field">
               <label className="label">E-Mail</label>
               <div className="control">
                 <input
@@ -191,18 +305,6 @@ const ContactModal = ({ active, handleModal, token, id, setErrorMsg }) => {
                   placeholder="E-Mail Adresse eingeben"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="input"
-                />
-              </div>
-            </div>
-            <div className="field">
-              <label className="label">Geburtstag</label>
-              <div className="control">
-                <input
-                  type="date"
-                  placeholder="Geburtsdatum auswählen"
-                  value={birthdate}
-                  onChange={(e) => setBirthdate(e.target.value)}
                   className="input"
                 />
               </div>
@@ -220,7 +322,7 @@ const ContactModal = ({ active, handleModal, token, id, setErrorMsg }) => {
               </div>
             </div>
             <div className="field">
-              <label className="label">Telefon-Nr.</label>
+              <label className="label">Strasse</label>
               <div className="control">
                 <input
                   type="text"
@@ -239,78 +341,6 @@ const ContactModal = ({ active, handleModal, token, id, setErrorMsg }) => {
                   placeholder="PLZ Wohnort eingeben "
                   value={city}
                   onChange={(e) => setCity(e.target.value)}
-                  className="input"
-                />
-              </div>
-            </div>
-            <div className="field">
-              <label className="label">Discord</label>
-              <div className="control">
-                <input
-                  type="text"
-                  placeholder="Discord Adresse: Benutzername#1234"
-                  value={discord}
-                  onChange={(e) => setDiscord(e.target.value)}
-                  className="input"
-                />
-              </div>
-            </div>
-            <div className="field">
-              <label className="label">Twitter</label>
-              <div className="control">
-                <input
-                  type="text"
-                  placeholder="https://twitter.com/benutzername"
-                  value={twitter}
-                  onChange={(e) => setTwitter(e.target.value)}
-                  className="input"
-                />
-              </div>
-            </div>
-            <div className="field">
-              <label className="label">Facebook</label>
-              <div className="control">
-                <input
-                  type="text"
-                  placeholder="https://facebook.com/benutzername"
-                  value={facebook}
-                  onChange={(e) => setFacebook(e.target.value)}
-                  className="input"
-                />
-              </div>
-            </div>
-            <div className="field">
-              <label className="label">Youtube</label>
-              <div className="control">
-                <input
-                  type="text"
-                  placeholder="https://www.youtube.com/channel/... "
-                  value={youtube}
-                  onChange={(e) => setYoutube(e.target.value)}
-                  className="input"
-                />
-              </div>
-            </div>
-            <div className="field">
-              <label className="label">LinkedIn</label>
-              <div className="control">
-                <input
-                  type="text"
-                  placeholder="https://linkedin.com/in/benutzername"
-                  value={linkedin}
-                  onChange={(e) => setLinkedin(e.target.value)}
-                  className="input"
-                />
-              </div>
-            </div>
-            <div className="field">
-              <label className="label">Webseite</label>
-              <div className="control">
-                <input
-                  type="text"
-                  placeholder="Webseiten Adresse eingeben "
-                  value={homepage}
-                  onChange={(e) => setHomepage(e.target.value)}
                   className="input"
                 />
               </div>
@@ -351,6 +381,310 @@ const ContactModal = ({ active, handleModal, token, id, setErrorMsg }) => {
                   value={note}
                   onChange={(e) => setNote(e.target.value)}
                   className="textarea"
+                />
+              </div>
+            </div>
+            {/* <div class="divider">
+              <hr />
+              <h5>Soziale Medien</h5>
+            </div> */}
+            <div className="field">
+              <label className="label">DeviantArt</label>
+              <div className="control">
+                <input
+                  type="text"
+                  placeholder="DeviantArt Adresse eingeben"
+                  value={deviantart}
+                  onChange={(e) => setDeviantart(e.target.value)}
+                  className="input"
+                />
+              </div>
+            </div>
+            <div className="field">
+              <label className="label">Discord</label>
+              <div className="control">
+                <input
+                  type="text"
+                  placeholder="Discord Adresse: Benutzername#1234"
+                  value={discord}
+                  onChange={(e) => setDiscord(e.target.value)}
+                  className="input"
+                />
+              </div>
+            </div>
+            <div className="field">
+              <label className="label">Dribble</label>
+              <div className="control">
+                <input
+                  type="text"
+                  placeholder="Dribble Adresse eingeben"
+                  value={dribble}
+                  onChange={(e) => setDribble(e.target.value)}
+                  className="input"
+                />
+              </div>
+            </div>
+            <div className="field">
+              <label className="label">Facebook</label>
+              <div className="control">
+                <input
+                  type="text"
+                  placeholder="https://facebook.com/benutzername"
+                  value={facebook}
+                  onChange={(e) => setFacebook(e.target.value)}
+                  className="input"
+                />
+              </div>
+            </div>
+            <div className="field">
+              <label className="label">Flickr</label>
+              <div className="control">
+                <input
+                  type="text"
+                  placeholder="Flickr Adresse eingeben"
+                  value={flickr}
+                  onChange={(e) => setFlickr(e.target.value)}
+                  className="input"
+                />
+              </div>
+            </div>
+            <div className="field">
+              <label className="label">Github</label>
+              <div className="control">
+                <input
+                  type="text"
+                  placeholder="https://github.com/benutzername"
+                  value={github}
+                  onChange={(e) => setGithub(e.target.value)}
+                  className="input"
+                />
+              </div>
+            </div>
+            <div className="field">
+              <label className="label">Gitlab</label>
+              <div className="control">
+                <input
+                  type="text"
+                  placeholder="https://gitlab.com/benutzername"
+                  value={gitlab}
+                  onChange={(e) => setGitlab(e.target.value)}
+                  className="input"
+                />
+              </div>
+            </div>
+            <div className="field">
+              <label className="label">Instagram</label>
+              <div className="control">
+                <input
+                  type="text"
+                  placeholder="https://instagram.com/benutzername"
+                  value={instagram}
+                  onChange={(e) => setInstagram(e.target.value)}
+                  className="input"
+                />
+              </div>
+            </div>
+            <div className="field">
+              <label className="label">LinkedIn</label>
+              <div className="control">
+                <input
+                  type="text"
+                  placeholder="https://linkedin.com/in/benutzername"
+                  value={linkedin}
+                  onChange={(e) => setLinkedin(e.target.value)}
+                  className="input"
+                />
+              </div>
+            </div>
+            <div className="field">
+              <label className="label">Mastodon</label>
+              <div className="control">
+                <input
+                  type="text"
+                  placeholder="Mastodon Adresse eingeben"
+                  value={mastodon}
+                  onChange={(e) => setMastodon(e.target.value)}
+                  className="input"
+                />
+              </div>
+            </div>
+            <div className="field">
+              <label className="label">Netlify</label>
+              <div className="control">
+                <input
+                  type="text"
+                  placeholder="Netlify Adresse eingeben"
+                  value={netlify}
+                  onChange={(e) => setNetlify(e.target.value)}
+                  className="input"
+                />
+              </div>
+            </div>
+            <div className="field">
+              <label className="label">Pinterest</label>
+              <div className="control">
+                <input
+                  type="text"
+                  placeholder="Pinterest Adresse eingeben"
+                  value={pinterest}
+                  onChange={(e) => setPinterest(e.target.value)}
+                  className="input"
+                />
+              </div>
+            </div>
+            <div className="field">
+              <label className="label">Reddit</label>
+              <div className="control">
+                <input
+                  type="text"
+                  placeholder="Reddit Adresse eingeben"
+                  value={reddit}
+                  onChange={(e) => setReddit(e.target.value)}
+                  className="input"
+                />
+              </div>
+            </div>
+            <div className="field">
+              <label className="label">Slack</label>
+              <div className="control">
+                <input
+                  type="text"
+                  placeholder="Slack Adresse eingeben"
+                  value={slack}
+                  onChange={(e) => setSlack(e.target.value)}
+                  className="input"
+                />
+              </div>
+            </div>
+            <div className="field">
+              <label className="label">Spaces</label>
+              <div className="control">
+                <input
+                  type="text"
+                  placeholder="Spaces Adresse eingeben"
+                  value={spaces}
+                  onChange={(e) => setSpaces(e.target.value)}
+                  className="input"
+                />
+              </div>
+            </div>
+            <div className="field">
+              <label className="label">Thumblr</label>
+              <div className="control">
+                <input
+                  type="text"
+                  placeholder="Thumblr Adresse eingeben"
+                  value={thumblr}
+                  onChange={(e) => setThumblr(e.target.value)}
+                  className="input"
+                />
+              </div>
+            </div>
+            <div className="field">
+              <label className="label">TikTok</label>
+              <div className="control">
+                <input
+                  type="text"
+                  placeholder="TikTok Adresse eingeben"
+                  value={tiktok}
+                  onChange={(e) => setTiktok(e.target.value)}
+                  className="input"
+                />
+              </div>
+            </div>
+            <div className="field">
+              <label className="label">Twitch</label>
+              <div className="control">
+                <input
+                  type="text"
+                  placeholder="Twitch Adresse eingeben"
+                  value={twitch}
+                  onChange={(e) => setTwitch(e.target.value)}
+                  className="input"
+                />
+              </div>
+            </div>
+            <div className="field">
+              <label className="label">Twitter</label>
+              <div className="control">
+                <input
+                  type="text"
+                  placeholder="https://twitter.com/benutzername"
+                  value={twitter}
+                  onChange={(e) => setTwitter(e.target.value)}
+                  className="input"
+                />
+              </div>
+            </div>
+            <div className="field">
+              <label className="label">Vercel</label>
+              <div className="control">
+                <input
+                  type="text"
+                  placeholder="https://vercel.com/benutzername"
+                  value={vercel}
+                  onChange={(e) => setVercel(e.target.value)}
+                  className="input"
+                />
+              </div>
+            </div>
+            <div className="field">
+              <label className="label">Vk</label>
+              <div className="control">
+                <input
+                  type="text"
+                  placeholder="Vk Adresse eingeben"
+                  value={vk}
+                  onChange={(e) => setVk(e.target.value)}
+                  className="input"
+                />
+              </div>
+            </div>
+            <div className="field">
+              <label className="label">Weibo</label>
+              <div className="control">
+                <input
+                  type="text"
+                  placeholder="Weibo Adresse eingeben"
+                  value={weibo}
+                  onChange={(e) => setWeibo(e.target.value)}
+                  className="input"
+                />
+              </div>
+            </div>
+            <div className="field">
+              <label className="label">Wize</label>
+              <div className="control">
+                <input
+                  type="text"
+                  placeholder="Wize Adresse eingeben"
+                  value={wize}
+                  onChange={(e) => setWize(e.target.value)}
+                  className="input"
+                />
+              </div>
+            </div>
+            <div className="field">
+              <label className="label">Xing</label>
+              <div className="control">
+                <input
+                  type="text"
+                  placeholder="Xing Adresse eingeben"
+                  value={xing}
+                  onChange={(e) => setXing(e.target.value)}
+                  className="input"
+                />
+              </div>
+            </div>
+            <div className="field">
+              <label className="label">Youtube</label>
+              <div className="control">
+                <input
+                  type="text"
+                  placeholder="https://www.youtube.com/channel/... "
+                  value={youtube}
+                  onChange={(e) => setYoutube(e.target.value)}
+                  className="input"
                 />
               </div>
             </div>

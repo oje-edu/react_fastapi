@@ -84,16 +84,16 @@ async def get_user(user: _schemas.User = _fastapi.Depends(_services.get_current_
     return user
 
 
-@app.post("/api/contacts", tags=["contacts"], response_model=_schemas.Lead)
+@app.post("/api/contacts", tags=["contacts"], response_model=_schemas.Contact)
 async def create_contact(
-    lead: _schemas.LeadCreate,
+    contact: _schemas.ContactCreate,
     user: _schemas.User = _fastapi.Depends(_services.get_current_user),
     db: _orm.Session = _fastapi.Depends(_services.get_db),
 ):
-    return await _services.create_contact(user=user, db=db, lead=lead)
+    return await _services.create_contact(user=user, db=db, contact=contact)
 
 
-@app.get("/api/contacts", tags=["contacts"], response_model=List[_schemas.Lead])
+@app.get("/api/contacts", tags=["contacts"], response_model=List[_schemas.Contact])
 async def get_contacts(
     user: _schemas.User = _fastapi.Depends(_services.get_current_user),
     db: _orm.Session = _fastapi.Depends(_services.get_db),
@@ -113,11 +113,11 @@ async def get_contact(
 @app.put("/api/contacts/{contact_id}", tags=["contacts"], status_code=200)
 async def update_contact(
     contact_id: int,
-    lead: _schemas.LeadCreate,
+    contact: _schemas.ContactCreate,
     user: _schemas.User = _fastapi.Depends(_services.get_current_user),
     db: _orm.Session = _fastapi.Depends(_services.get_db),
 ):
-    await _services.update_contact(contact_id, lead, user, db)
+    await _services.update_contact(contact_id, contact, user, db)
     return {"message", "Die Änderungen wurden übernommen."}
 
 
